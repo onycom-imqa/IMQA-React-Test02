@@ -1,6 +1,8 @@
 import { makeStyles } from "@material-ui/core";
+import {useIMQA} from "imqa-react-sdk";
 
 const SelectButton = ({ children, selected, onClick }) => {
+  const IMQARef = useIMQA(); // 삽입
   const useStyles = makeStyles({
     selectbutton: {
       border: "1px solid gold",
@@ -25,9 +27,11 @@ const SelectButton = ({ children, selected, onClick }) => {
   const classes = useStyles();
 
   return (
+      <div ref={IMQARef}>
     <span onClick={onClick} className={classes.selectbutton}>
       {children}
     </span>
+      </div>
   );
 };
 
